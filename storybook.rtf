@@ -1,0 +1,324 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fmodern\fcharset0 CourierNewPSMT;\f1\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red197\green134\blue192;\red212\green212\blue212;\red156\green220\blue254;
+\red206\green145\blue120;\red79\green193\blue255;\red78\green201\blue176;\red86\green156\blue214;\red128\green128\blue128;
+\red220\green220\blue170;\red106\green153\blue85;\red181\green206\blue168;\red209\green105\blue105;}
+{\*\expandedcolortbl;;\csgenericrgb\c77255\c52549\c75294;\csgenericrgb\c83137\c83137\c83137;\csgenericrgb\c61176\c86275\c99608;
+\csgenericrgb\c80784\c56863\c47059;\csgenericrgb\c30980\c75686\c100000;\csgenericrgb\c30588\c78824\c69020;\csgenericrgb\c33725\c61176\c83922;\csgenericrgb\c50196\c50196\c50196;
+\csgenericrgb\c86275\c86275\c66667;\csgenericrgb\c41569\c60000\c33333;\csgenericrgb\c70980\c80784\c65882;\csgenericrgb\c81961\c41176\c41176;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab708
+\pard\pardeftab708\ri-9\sl325\slmult1\sb240\sa240\partightenfactor0
+
+\f0\fs21 \cf2 import\cf3  \{ \cf4 ComponentStory\cf3 , \cf4 ComponentMeta\cf3  \} \cf2 from\cf3  \cf5 "@storybook/react"\cf3 ;\
+\cf2 import\cf3  \{ \cf4 BasicButtons\cf3 , \cf4 ButtonCustomProps\cf3  \} \cf2 from\cf3  \cf5 "./Button"\cf3 ;\
+\cf2 export\cf3  \cf2 default\cf3  \{\
+  \cf4 title:\cf3  \cf5 "Loqal/Atoms/Button"
+\f1 \cf3 ,\
+\pard\pardeftab708\ri-9\sl325\slmult1\sb240\sa240\partightenfactor0
+
+\f0 \cf3   \cf4 component:\cf3  \cf6 BasicButtons
+\f1 \cf3 \
+\}
+\f0  \cf2 as\cf3  \cf7 ComponentMeta\cf3 <\cf8 typeof\cf3  \cf6 BasicButtons\cf3 >;\
+\pard\pardeftab708\ri-9\sl276\slmult1\sb240\sa240\partightenfactor0
+
+\f1\fs22 \cf0 \
+\pard\pardeftab708\ri-9\sl325\slmult1\sb240\sa240\partightenfactor0
+
+\f0\fs21 \cf2 export\cf3  \cf8 const\cf3  \cf6 Primary\cf3 : \cf7 ComponentStory\cf3 <\cf8 typeof\cf3  \cf6 BasicButtons\cf3 > = () \cf8 =>\cf3  \cf9 <\cf7 BasicButtons\cf3  \cf4 label\cf3 =\cf5 "Simple B"\cf3  \cf4 variant\cf3 =\cf5 "text"\cf3  \cf9 />\
+\pard\pardeftab708\ri-9\sl276\slmult1\sb240\sa240\partightenfactor0
+
+\f1 \cf2 \
+\pard\pardeftab708\ri-9\sl325\slmult1\sb240\sa240\partightenfactor0
+
+\f0 \cf8 const\cf3  \cf6 Template\cf3 : \cf7 ComponentStory\cf3 <\cf8 typeof\cf3  \cf6 BasicButtons\cf3 > = \cf8 function\cf3  (\cf4 args\cf3 ) \{\
+  \cf2 return\cf3  \cf9 <\cf7 BasicButtons\cf3  
+\f1 \cf8 \{\cf3 ...
+\f0 \cf4 args
+\f1 \cf8 \}
+\f0 \cf3  \cf9 />\cf3 ;\
+\};
+\f1\fs22 \cf0 \
+\pard\pardeftab708\ri-9\sl325\slmult1\sb240\sa240\partightenfactor0
+
+\f0\fs21 \cf2 export\cf3  \cf8 const\cf3  \cf6 Primary\cf3 : \cf7 ComponentStory\cf3 <\cf8 typeof\cf3  \cf6 BasicButtons\cf3 > = \cf6 Template
+\f1 \cf3 .
+\f0 \cf10 bind\cf3 (\{\});\
+\pard\pardeftab708\ri-9\sl325\slmult1\sb240\sa240\partightenfactor0
+\cf6 Primary
+\f1 \cf3 .
+\f0 \cf4 args\cf3  = \{\
+  \cf4 label:\cf3  \cf5 "Simple B"
+\f1 \cf3 ,\
+\pard\pardeftab708\ri-9\sl325\slmult1\sb240\sa240\partightenfactor0
+
+\f0 \cf3   \cf4 variant:\cf3  \cf5 "text"
+\f1 \cf3 ,\
+\}
+\f0 ;\
+\pard\pardeftab708\ri-9\sl325\slmult1\sb240\sa240\partightenfactor0
+\cf2 export\cf3  \cf8 const\cf3  \cf6 PrimaryTwo\cf3 : \cf7 ComponentStory\cf3 <\cf8 typeof\cf3  \cf6 BasicButtons\cf3 > = \cf6 Template
+\f1 \cf3 .
+\f0 \cf10 bind\cf3 (\{\});\
+\pard\pardeftab708\ri-9\sl325\slmult1\sb240\sa240\partightenfactor0
+\cf6 PrimaryTwo
+\f1 \cf3 .
+\f0 \cf4 args\cf3  = \{\
+  ...\cf6 Primary
+\f1 \cf3 .
+\f0 \cf4 args
+\f1 \cf3 ,\
+\pard\pardeftab708\ri-9\sl325\slmult1\sb240\sa240\partightenfactor0
+
+\f0 \cf3   \cf4 label:\cf3  \cf5 "Simple Two"
+\f1 \cf3 ,\
+\}
+\f0 ;\
+\pard\pardeftab708\ri-9\sl276\slmult1\sb240\sa240\partightenfactor0
+
+\f1\fs22 \cf0 \
+\pard\pardeftab708\ri-9\sl325\slmult1\sb240\sa240\partightenfactor0
+
+\f0\fs21 \cf2 export\cf3  \cf8 const\cf3  \cf6 SecondaryContained\cf3 : \cf7 ComponentStory\cf3 <\cf8 typeof\cf3  \cf6 BasicButtons\cf3 > = \cf6 Template
+\f1 \cf3 .
+\f0 \cf10 bind\cf3 (\{\});\
+\pard\pardeftab708\ri-9\sl325\slmult1\sb240\sa240\partightenfactor0
+\cf6 SecondaryContained
+\f1 \cf3 .
+\f0 \cf4 args\cf3  = \{\
+  \cf4 label:\cf3  \cf5 "Contained"
+\f1 \cf3 ,\
+\pard\pardeftab708\ri-9\sl325\slmult1\sb240\sa240\partightenfactor0
+
+\f0 \cf3   \cf4 variant:\cf3  \cf5 "contained"
+\f1 \cf3 ,\
+\}
+\f0 ;\
+\pard\pardeftab708\ri-9\sl276\slmult1\sb240\sa240\partightenfactor0
+
+\f1\fs22 \cf0 \
+\
+\pard\pardeftab708\ri-9\sl325\slmult1\sb240\sa240\partightenfactor0
+
+\f0\fs21 \cf2 export\cf3  \cf2 default\cf3  \{\
+  \cf4 title:\cf3  \cf5 "Loqal/Molecules/DialogCard"
+\f1 \cf3 ,\
+\pard\pardeftab708\ri-9\sl325\slmult1\sb240\sa240\partightenfactor0
+
+\f0 \cf3   \cf10 component\cf4 :\cf3  \cf10 SimpleDialogCard
+\f1 \cf3 ,\
+
+\f0   \cf4 argTypes:\cf3  \{\
+    \cf4 content:\cf3  \{ \cf4 control:\cf3  \cf5 'text'\cf3  \},\
+    \cf4 typeTitle:\cf3  \{\
+      \cf4 control:\cf3  \{ \cf4 type:\cf3  \cf5 "select"\cf3 , \cf4 options:\cf3  [\cf5 "error"\cf3 , \cf5 "warn"\cf3 , \cf5 "info"\cf3 ] \},\
+    
+\f1 \},\
+
+\f0     \cf4 onClick:\cf3  \{  \
+      \cf4 table:\cf3  \{\
+        \cf4 disable:\cf3  \cf8 true
+\f1 \cf3 ,\
+
+\f0       \}\
+    \},\
+    \cf4 label:\cf3  \{\
+      \cf4 table:\cf3  \{\
+        \cf4 disable:\cf3  \cf8 true
+\f1 \cf3 ,\
+
+\f0       \},\
+    \}\
+  \},\
+\} \cf2 as\cf3  \cf7 ComponentMeta\cf3 <\cf8 typeof\cf3  \cf10 SimpleDialogCard\cf3 >;\
+\pard\pardeftab708\ri-9\sl276\slmult1\sb240\sa240\partightenfactor0
+
+\f1\fs22 \cf0 \
+\pard\pardeftab708\ri-9\sl325\slmult1\sb240\sa240\partightenfactor0
+
+\fs21 \cf7 \
+\pard\pardeftab708\ri-9\sl325\slmult1\sb240\sa240\partightenfactor0
+
+\f0 \cf7 module
+\f1 \cf3 .
+\f0 \cf7 exports\cf3  = \{\
+  \cf5 "stories"\cf4 :\cf3  [\
+    \cf5 "../src/**/*.stories.mdx"
+\f1 \cf3 ,\
+\pard\pardeftab708\ri-9\sl325\slmult1\sb240\sa240\partightenfactor0
+
+\f0 \cf3     \cf5 "../src/**/*.stories.@(js|jsx|ts|tsx)"\
+\cf3   ],\
+  \cf5 "addons"\cf4 :\cf3  [\
+    \cf5 "@storybook/addon-links"
+\f1 \cf3 ,\
+
+\f0     \cf5 "@storybook/addon-essentials"
+\f1 \cf3 ,\
+
+\f0     \cf5 "@storybook/preset-create-react-app"
+\f1 \cf3 ,\
+
+\f0     \cf5 'storybook-react-i18next'
+\f1 \cf3 ,\
+
+\f0     \cf5 "@storybook/addon-interactions"\
+\cf3   ],\
+\pard\pardeftab708\ri-9\sl276\slmult1\sb240\sa240\partightenfactor0
+
+\f1\fs22 \cf0 \
+\pard\pardeftab708\ri-9\sl325\slmult1\sb240\sa240\partightenfactor0
+
+\f0\fs21 \cf8 function\cf3  \cf10 sleep\cf3 (\cf4 ms\cf3 : \cf7 number\cf3 ) \{\
+  \cf2 return\cf3  \cf8 new\cf3  \cf7 Promise\cf3 ((\cf10 resolve\cf3 ) \cf8 =>\cf3  \cf10 setTimeout\cf3 (\cf10 resolve\cf3 , \cf4 ms\cf3 ));\
+\}\
+\pard\pardeftab708\ri-9\sl325\slmult1\sb240\sa240\partightenfactor0
+\cf2 export\cf3  \cf8 const\cf3  \cf6 AutomatedFormFilled\cf3 : \cf7 ComponentStoryObj\cf3 <\cf8 typeof\cf3  \cf10 DynamicForm\cf3 >  = \{\
+  \cf4 args:\cf3  \{\
+    \cf10 fieldsSchema\cf4 :\cf3  \cf10 fieldsSchemaUserBasic
+\f1 \cf3 ,\
+\pard\pardeftab708\ri-9\sl325\slmult1\sb240\sa240\partightenfactor0
+
+\f0 \cf3     \cf4 validationSchema:\cf3  \cf6 ValidationSchemaUserBasicInfo\
+\cf3   \},\
+  \cf10 play\cf4 :\cf3   \cf8 async\cf3  (\{ \cf4 canvasElement\cf3  \}) \cf8 =>\cf3  \{\
+    \cf11 // querying component from root element\
+\cf3     \cf8 const\cf3  \cf6 canvas\cf3  = \cf10 within\cf3 (\cf4 canvasElement\cf3 );\
+    \cf4 userEvent
+\f1 \cf3 .
+\f0 \cf10 type\cf3 (\cf6 canvas
+\f1 \cf3 .
+\f0 \cf10 getByLabelText\cf3 (\cf5 'Username'\cf3 ), \cf5 'jinanemehd'\cf3 );\
+    \cf2 await\cf3  \cf10 sleep\cf3 (\cf12 200\cf3 )\
+    \cf4 userEvent
+\f1 \cf3 .
+\f0 \cf10 type\cf3 (\cf4 screen
+\f1 \cf3 .
+\f0 \cf10 getByLabelText\cf3 (\cf5 'Email'\cf3 ), \cf5 'jinane@loqal.com'\cf3 );\
+    \cf2 await\cf3  \cf10 sleep\cf3 (\cf12 200\cf3 )\
+    \cf4 userEvent
+\f1 \cf3 .
+\f0 \cf10 type\cf3 (\cf4 screen
+\f1 \cf3 .
+\f0 \cf10 getByLabelText\cf3 (\cf5 'Password'\cf3 ), \cf5 '123398bnjhbjh'\cf3 );\
+    \cf2 await\cf3  \cf10 sleep\cf3 (\cf12 200\cf3 )\
+    \cf4 userEvent
+\f1 \cf3 .
+\f0 \cf10 click\cf3 (\cf6 canvas
+\f1 \cf3 .
+\f0 \cf10 getByRole\cf3 (\cf5 'button'\cf3 ));\
+  \}\
+\}\
+\pard\pardeftab708\ri-9\sl325\slmult1\sb240\sa240\partightenfactor0
+\cf8 const\cf3  \cf6 MainStepper\cf3  = \cf10 composeStory\cf3 (\cf6 MS\cf3 , \cf4 Meta\cf3 );\
+\
+\pard\pardeftab708\ri-9\sl325\slmult1\sb240\sa240\partightenfactor0
+\cf10 describe\cf3 (\cf5 "Testing Stepper Interraction"\cf3 , () \cf8 =>\cf3  \{\
+  \cf8 const\cf3  \cf6 user\cf3  = \cf4 userEvent
+\f1 \cf3 .
+\f0 \cf10 setup\cf3 ()\
+\
+  \cf10 it\cf3 (\cf5 'Check button enable to continue to '\cf3 , \cf8 async\cf3  () \cf8 =>\cf3  \{\
+    \cf8 const\cf3  \cf6 alertMock\cf3  = \cf4 jest
+\f1 \cf3 .
+\f0 \cf10 spyOn\cf3 (\cf4 window
+\f1 \cf3 ,
+\f0 \cf5 'alert'\cf3 ).\cf10 mockImplementation\cf3 ();\
+    \cf8 const\cf3  \{ \cf6 getByLabelText
+\f1 \cf3 ,
+\f0 \cf6 getByTestId\cf3 , \cf6 container\cf3 , \cf6 debug\cf3   \} = \cf10 render\cf3 (\cf9 <\cf7 MainStepper\cf3  \cf9 />\cf3  )\
+\
+    \cf11 // first step\
+\pard\pardeftab708\ri-9\sl325\slmult1\sb240\sa240\partightenfactor0
+\cf3     \cf2 await\cf3  \cf6 user
+\f1 \cf3 .
+\f0 \cf10 type\cf3 (\cf10 getByLabelText\cf3 (\cf13 /username/\cf8 i\cf3 ), \cf5 'John Doe'\cf3 )\
+    \cf2 await\cf3  \cf6 user
+\f1 \cf3 .
+\f0 \cf10 type\cf3 (\cf10 getByLabelText\cf3 (\cf13 /email/\cf8 i\cf3 ), \cf5 'john.doe@gmail.com'\cf3 )\
+    \cf2 await\cf3  \cf6 user
+\f1 \cf3 .
+\f0 \cf10 type\cf3 (\cf10 getByLabelText\cf3 (\cf13 /password/\cf8 i\cf3 ), \cf5 'John2021_'\cf3 )\
+    \cf8 const\cf3  \cf6 ArrowNext\cf3  = \cf6 container
+\f1 \cf3 .
+\f0 \cf10 getElementsByClassName\cf3 (\cf5 'stepper-rightIcon'\cf3 )\
+    \cf10 expect\cf3 (\cf6 ArrowNext
+\f1 \cf3 .
+\f0 \cf4 length\cf3 ).\cf10 toBe\cf3 (
+\f1 \cf12 0
+\f0 \cf3 )\
+    \cf2 await\cf3  \cf6 user
+\f1 \cf3 .
+\f0 \cf10 click\cf3 (\cf10 getByTestId\cf3 (\cf5 'check-user'\cf3 ))\
+    \cf10 waitFor\cf3 (() \cf8 =>\cf3  \{\
+      \cf10 expect\cf3 (\cf6 ArrowNext
+\f1 \cf3 .
+\f0 \cf4 length\cf3 ).\cf10 toBe\cf3 (\cf12 1\cf3 )\
+    \})\
+    \cf2 await\cf3  \cf6 user
+\f1 \cf3 .
+\f0 \cf10 click\cf3 (\cf10 getByTestId\cf3 (\cf5 'stepper-rightIcon'\cf3 ))\
+\
+     \cf11 // second step\
+\cf3     \cf2 await\cf3  \cf6 user
+\f1 \cf3 .
+\f0 \cf10 type\cf3 (\cf10 getByLabelText\cf3 (\cf13 /city/\cf8 i\cf3 ), \cf5 'Bougival'\cf3 )\
+    \cf2 await\cf3  \cf6 user
+\f1 \cf3 .
+\f0 \cf10 type\cf3 (\cf10 getByLabelText\cf3 (\cf13 /zipcode/\cf8 i\cf3 ), \cf5 '78380'\cf3 )\
+    \cf2 await\cf3  \cf6 user
+\f1 \cf3 .
+\f0 \cf10 type\cf3 (\cf10 getByLabelText\cf3 (\cf13 /country/\cf8 i\cf3 ), \cf5 'France'\cf3 )\
+    \cf2 await\cf3  \cf6 user
+\f1 \cf3 .
+\f0 \cf10 click\cf3 (\cf10 getByTestId\cf3 (\cf5 'check-adress'\cf3 ))\
+\
+    \cf11 //third step\
+\cf3     \cf2 await\cf3  \cf6 user
+\f1 \cf3 .
+\f0 \cf10 click\cf3 (\cf10 getByTestId\cf3 (\cf5 'stepper-rightIcon'\cf3 ))\
+    \cf2 await\cf3  \cf6 user
+\f1 \cf3 .
+\f0 \cf10 click\cf3 (\cf10 getByTestId\cf3 (\cf5 'submit'\cf3 ))\
+    \cf2 await\cf3  \cf10 waitFor\cf3 (() \cf8 =>\cf3  \{\
+      \cf10 expect\cf3 (\cf6 alertMock\cf3 )\
+        .\cf10 toBeCalledWith\cf3 (\cf4 JSON
+\f1 \cf3 .
+\f0 \cf10 stringify\cf3 (\{\
+          \cf5 'username'\cf4 :\cf5 'John Doe'
+\f1 \cf3 ,\
+
+\f0           \cf5 "email"\cf4 :\cf3  \cf5 "john.doe@gmail.com"
+\f1 \cf3 ,\
+
+\f0           \cf5 "password"\cf4 :\cf3  \cf5 "John2021_"
+\f1 \cf3 ,\
+
+\f0           \cf5 "city"\cf4 :\cf3  \cf5 "Bougival"
+\f1 \cf3 ,\
+
+\f0           \cf5 "zipcode"\cf4 :\cf3  \cf5 "78380"
+\f1 \cf3 ,\
+
+\f0           \cf5 "country"\cf4 :\cf3  \cf5 "France"
+\f1 \cf3 ,\
+
+\f0           \cf5 "contact"\cf4 :\cf3  \cf5 "0"\
+\cf3         \}, \cf8 null\cf3 , \cf12 2\cf3 ))\
+    \})\
+  \})\
+\});\
+\pard\pardeftab708\ri-9\sl276\slmult1\sb240\sa240\partightenfactor0
+
+\f1\fs22 \cf0 \
+\
+\
+\
+\pard\pardeftab708\ri-9\sl276\slmult1\sb240\sa240\qc\partightenfactor0
+\cf0 \
+\pard\pardeftab708\ri-9\sl276\slmult1\sb240\sa240\partightenfactor0
+\cf0 \
+\pard\pardeftab708\ri-9\sl276\slmult1\partightenfactor0
+\cf0 \
+}

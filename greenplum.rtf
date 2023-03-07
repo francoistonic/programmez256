@@ -1,0 +1,489 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\froman\fcharset0 TimesNewRomanPSMT;\f1\fswiss\fcharset0 Helvetica;\f2\fnil\fcharset0 Consolas;
+}
+{\colortbl;\red255\green255\blue255;\red13\green10\blue11;\red9\green134\blue88;\red0\green0\blue255;
+\red163\green21\blue21;\red51\green51\blue51;\red0\green128\blue128;\red0\green128\blue0;\red0\green16\blue128;
+\red119\green136\blue153;\red152\green0\blue0;\red230\green145\blue56;\red81\green81\blue81;}
+{\*\expandedcolortbl;;\csgenericrgb\c5098\c3922\c4314;\csgenericrgb\c3529\c52549\c34510;\csgenericrgb\c0\c0\c100000;
+\csgenericrgb\c63922\c8235\c8235;\csgenericrgb\c20000\c20000\c20000;\csgenericrgb\c0\c50196\c50196;\csgenericrgb\c0\c50196\c0;\csgenericrgb\c0\c6275\c50196;
+\csgenericrgb\c46667\c53333\c60000;\csgenericrgb\c59608\c0\c0;\csgenericrgb\c90196\c56863\c21961;\csgenericrgb\c31765\c31765\c31765;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab708
+\pard\pardeftab708\ri-340\qj\partightenfactor0
+
+\f0\fs20 \cf2 \
+\pard\pardeftab708\ri-340\qj\partightenfactor0
+
+\f1 \cf2 Exemple:\
+\pard\pardeftab708\li720\ri-340\partightenfactor0
+\cf0 CREATE OR REPLACE FUNCTION pybool_func(a int) RETURNS boolean\
+AS $$\
+    if (a > 0):\
+        return True\
+    else:\
+        return False\
+\pard\pardeftab708\li720\ri-340\partightenfactor0
+
+\fs21 \cf3 $$\cf0  \cf4 LANGUAGE\cf0  \cf5 'plpythonu'\cf0 ;
+\f0\fs20 \
+\
+\pard\pardeftab708\li720\ri-340\partightenfactor0
+
+\f1 \cf0 SELECT pybool_func(-1);\
+\
+ pybool_func\
+\pard\pardeftab708\li720\ri-340\sb240\partightenfactor0
+
+\f0 \cf0 -------------\
+
+\f1  f\
+(1 row)
+\f0 \cf6 \
+\pard\pardeftab708\ri-340\partightenfactor0
+\cf2 \
+\pard\pardeftab708\ri-340\partightenfactor0
+
+\fs24 \cf0 \page \pard\pardeftab708\ri-340\partightenfactor0
+
+\fs20 \cf2 \
+\
+\
+\pard\pardeftab708\li720\ri-340\partightenfactor0
+\cf0 \
+\pard\pardeftab708\li720\ri-340\partightenfactor0
+
+\f1\fs16 \cf0 CREATE OR REPLACE FUNCTION pybool_func(a int) RETURNS boolean AS $$\
+# container: plc_python3_shared\
+    if (a > 0):\
+        return True\
+    else:\
+        return False\
+$$ LANGUAGE plcontainer;\
+\
+SELECT pybool_func(-1);\
+\
+ pybool_func\
+\pard\pardeftab708\li720\ri-340\sb240\partightenfactor0
+
+\f0 \cf0 -------------\
+
+\f1  f\
+\pard\pardeftab708\fi720\ri-340\sb60\sa60\partightenfactor0
+\cf0 (1 row)
+\f0\fs20 \cf6 \
+\pard\pardeftab708\ri-340\sb60\sa60\partightenfactor0
+\cf6 \
+\pard\pardeftab708\ri-340\qj\partightenfactor0
+\cf0 \
+\pard\pardeftab708\ri-340\sl325\slmult1\partightenfactor0
+
+\f2\fs21 \cf4 %%sql
+\f0 \cf0 \
+
+\f2 \cf4 CREATE\cf0  EXTERNAL WEB TABLE \cf7 abalone_external\cf0 (\
+    sex text \
+    , length float8\
+    , diameter float8\
+    , height float8\
+    , whole_weight float8\
+    , shucked_weight float8\
+    , viscera_weight float8\
+    , shell_weight float8\
+    , rings integer \cf8 -- target variable faire pr\'e9dire\
+\pard\pardeftab708\ri-340\sl325\slmult1\partightenfactor0
+\cf0 ) \cf7 location\cf0 (\cf5 'http://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data'\cf0 ) \
+format \cf5 'CSV'\cf0  \
+(\cf4 null\cf0  \cf4 as\cf0  \cf5 '?'\cf0 );\
+\pard\pardeftab708\ri-340\partightenfactor0
+
+\f0\fs20 \cf0 \
+\
+\pard\pardeftab708\ri-340\sl325\slmult1\partightenfactor0
+
+\f2\fs21 \cf4 %%sql\
+CREATE TABLE\cf0  abalone \cf4 AS\cf0  (\
+    \cf4 SELECT\cf0  \cf7 ROW_NUMBER\cf0 () \cf7 OVER\cf0 () \cf4 AS\cf0  \cf9 id\cf0 , \cf10 *\
+\pard\pardeftab708\ri-340\sl325\slmult1\partightenfactor0
+\cf0     \cf4 FROM\cf0  abalone_external \
+) DISTRIBUTED \cf4 BY\cf0  (sex);\
+\pard\pardeftab708\ri-340\partightenfactor0
+
+\f0\fs20 \cf0 \
+\
+\pard\pardeftab708\ri-340\sl325\slmult1\partightenfactor0
+
+\f2\fs21 \cf4 %%sql
+\f0\fs20 \cf0 \
+
+\f2\fs21 \cf4 SELECT\cf0  \cf10 *\cf0  \cf4 FROM\cf0  abalone \cf4 ORDER BY\cf0  id \cf4 LIMIT\cf0  \cf3 5\cf0 ;\
+\pard\pardeftab708\ri-340\partightenfactor0
+
+\f0\fs20 \cf0 \
+\pard\pardeftab708\ri-340\partightenfactor0
+
+\fs24 \cf0 \
+\pard\pardeftab708\ri-340\sl325\slmult1\partightenfactor0
+
+\fs20 \cf0 \
+\
+\pard\pardeftab708\ri-340\sl325\slmult1\partightenfactor0
+
+\f2\fs21 \cf4 %%sql
+\f0\fs24 \cf0 \
+
+\f2\fs21 \cf4 SELECT\cf0  gp_segment_id, sex, \cf7 COUNT\cf0 (\cf10 *\cf0 ) \
+\cf4 FROM\cf0  abalone\
+\cf4 GROUP BY\cf0  \cf3 1\cf0 , sex\
+\cf4 ORDER BY\cf0  gp_segment_id;
+\f0\fs20 \
+\pard\pardeftab708\ri-340\partightenfactor0
+
+\fs26 \cf0 \
+\
+\pard\pardeftab708\ri-340\sl325\slmult1\partightenfactor0
+
+\f2\fs21 \cf4 %%sql\
+SELECT\cf0  madlib.\cf7 train_test_split\cf0 (\
+    \cf5 'abalone'\cf0              \cf8 -- source table\
+\pard\pardeftab708\ri-340\sl325\slmult1\partightenfactor0
+\cf0     , \cf5 'abalone_split'\cf0      \cf8 -- output table\
+\cf0     , \cf3 0.8\cf0                  \cf8 -- proportion pour entra\'eenement\
+\cf0     , \cf3 0.2\cf0                  \cf8 -- proportion pour test\
+\cf0     , \cf5 'sex'\cf0                \cf8 -- d\'e9finition des strates\
+\cf0     , \cf4 NULL\cf0                 \cf8 -- colonnes de sortie\
+\cf0     , \cf4 FALSE\cf0                \cf8 -- \'e9chantillonnage avec rempla\'e7ants\
+\cf0     , \cf4 FALSE\cf0 );             \cf8 -- tables de sortie s\'e9par\'e9es\
+\pard\pardeftab708\ri-340\partightenfactor0
+
+\f0\fs20 \cf0 \
+\
+\pard\pardeftab708\ri-340\partightenfactor0
+
+\fs24 \cf0 \
+\pard\pardeftab708\ri-340\sl325\slmult1\partightenfactor0
+
+\f2\fs21 \cf4 %%sql\
+SELECT\cf0  \cf10 *\cf0  \cf4 FROM\cf0  abalone_split \cf4 ORDER BY\cf0  id \cf4 LIMIT\cf0  \cf3 5\cf0 ;\
+\pard\pardeftab708\ri-340\sl325\slmult1\partightenfactor0
+
+\f0\fs26 \cf11 \
+\pard\pardeftab708\ri-340\partightenfactor0
+
+\fs20 \cf0 \
+\
+\pard\pardeftab708\ri-340\sl325\slmult1\partightenfactor0
+
+\f2\fs21 \cf4 %%sql\
+CREATE\cf0  TYPE linreg_type \cf4 AS\cf0  (
+\f0 \
+\pard\pardeftab708\ri-340\sl325\slmult1\partightenfactor0
+
+\f2 \cf0     col_nm text[]\
+    , coef float8[]\
+    , intercept float8\
+    , serialized_linreg_model bytea\
+    , created_dt text\
+);\
+\pard\pardeftab708\ri-340\partightenfactor0
+
+\f0\fs24 \cf0 \
+\pard\pardeftab708\ri-340\partightenfactor0
+
+\fs20 \cf0 \
+\pard\pardeftab708\ri-340\partightenfactor0
+
+\fs24 \cf0 \
+\pard\pardeftab708\ri-340\sl325\slmult1\partightenfactor0
+
+\f2\fs21 \cf4 %%sql\
+CREATE\cf0  \cf10 OR\cf0  REPLACE \cf4 FUNCTION\cf0  \cf7 linreg_func\cf0 (
+\f0 \
+\pard\pardeftab708\ri-340\sl325\slmult1\partightenfactor0
+
+\f2 \cf0     length float8[]\
+    , shucked_weight float8[]\
+    , rings integer[]\
+) \cf4 RETURNS\cf0  linreg_type 
+\f0 \
+\pard\pardeftab708\ri-340\sl325\slmult1\partightenfactor0
+
+\f2 \cf4 AS\cf0  \cf3 $$
+\f0 \cf8 \
+\pard\pardeftab708\ri-340\sl325\slmult1\partightenfactor0
+\cf3 \
+\
+\pard\pardeftab708\ri-340\sl325\slmult1\partightenfactor0
+
+\f2 \cf0     \cf4 from\cf0  sklearn.linear_model import LinearRegression\
+    import numpy \cf4 as\cf0  \cf9 np\
+\cf0     \
+    X \cf10 =\cf0  np.\cf7 array\cf0 ([length, shucked_weight]).T\
+    y \cf10 =\cf0  np.\cf7 array\cf0 ([rings]).T\
+    \
+    \cf8 # R\'e9gression lin\'e9aire avec longueurs et poids\
+\cf0     linreg_fit \cf10 =\cf0  \cf7 LinearRegression\cf0 ().\cf7 fit\cf0 (X, y)\
+    linreg_coef \cf10 =\cf0  linreg_fit.coef_\
+    linreg_intercept \cf10 =\cf0  linreg_fit.intercept_\
+    \
+    \cf8 # Serialization du mod\'e8le entrain\'e9\
+\cf0     import pickle\
+    serialized_linreg_model \cf10 =\cf0  pickle.\cf7 dumps\cf0 (linreg_fit, protocol\cf10 =\cf3 2\cf0 ) \cf8 # protocol = 3 pour Python 3.x\
+\cf0     \
+    return \{\
+        \cf5 'col_nm'\cf0 : ['length', 'shucked_weight'],\
+        \cf5 'coef'\cf0 : linreg_coef[0],\
+        \cf5 'intercept'\cf0 : linreg_intercept[0],\
+        \cf5 'serialized_linreg_model'\cf0 : serialized_linreg_model,\
+        \cf5 'created_dt'\cf0 : \cf7 str\cf0 (datetime.datetime.\cf7 now\cf0 ())\}\
+    \
+\pard\pardeftab708\ri-340\sl325\slmult1\partightenfactor0
+\cf3 $$\cf0  \cf4 LANGUAGE\cf0  plPythonu;\
+\pard\pardeftab708\ri-340\partightenfactor0
+
+\f0\fs24 \cf0 \
+\
+\pard\pardeftab708\ri-340\sl325\slmult1\partightenfactor0
+
+\f2\fs21 \cf4 %%sql\
+CREATE TABLE\cf0  linreg_fitted \cf4 AS\cf0  (
+\f0 \
+\pard\pardeftab708\ri-340\sl325\slmult1\partightenfactor0
+
+\f2 \cf0     \cf4 SELECT\
+\cf0         a.sex\
+        , (\cf7 linreg_func\cf0 (
+\f0 \
+
+\f2             a.length_agg\
+            , a.shucked_weight_agg\
+            , a.rings_agg)\
+        ).\cf10 *\
+\cf0     \cf4 FROM\cf0  (\
+        \cf4 SELECT\
+\cf0             sex\
+            , \cf7 ARRAY_AGG\cf0 (length) \cf4 AS\cf0  \cf9 length_agg\
+\cf0             , \cf7 ARRAY_AGG\cf0 (shucked_weight) \cf4 AS\cf0  \cf9 shucked_weight_agg\
+\cf0             , \cf7 ARRAY_AGG\cf0 (rings) \cf4 AS\cf0  \cf9 rings_agg\
+\cf0         \cf4 FROM\cf0  abalone_split\
+        \cf4 WHERE\cf0  split \cf10 =\cf0  \cf3 1\
+\cf0         \cf4 GROUP BY\cf0  sex\
+    ) a\
+) DISTRIBUTED \cf4 BY\cf0  (sex);
+\f0\fs24 \
+\pard\pardeftab708\ri-340\partightenfactor0
+\cf0 \
+\pard\pardeftab708\ri-340\qj\partightenfactor0
+
+\fs20 \cf0 \
+\pard\pardeftab708\ri-340\sl325\slmult1\partightenfactor0
+
+\f2\fs21 \cf4 %%sql\
+\pard\pardeftab708\ri-340\sl325\slmult1\qj\partightenfactor0
+\cf4 SELECT\cf0  sex, col_nm, coef, intercept, created_dt \cf4 FROM\cf0  linreg_fitted;
+\f0 \
+\pard\pardeftab708\ri-340\qj\partightenfactor0
+
+\fs20 \cf0 \
+\
+\
+\
+\
+\
+\
+\
+\pard\pardeftab708\ri-340\sl325\slmult1\qj\partightenfactor0
+
+\f2\fs21 \cf4 %%sql\
+CREATE\cf0  \cf4 FUNCTION\cf0  \cf7 linreg_pred_func\cf0 (\
+    serialized_model bytea\
+    , features float8[]\
+) \cf4 RETURNS\cf0  SETOF float8\
+\cf4 AS\cf0  \cf3 $$\
+\pard\pardeftab708\ri-340\sl325\slmult1\qj\partightenfactor0
+\cf0     \
+    \cf8 # D\'e9s\'e9rialiser le mod\'e8le s\'e9rialis\'e9\
+\cf0     import six\
+    pickle \cf10 =\cf0  six.moves.cPickle\
+    model \cf10 =\cf0  pickle.\cf7 loads\cf0 (serialized_model)\
+    \
+    \cf8 # Pr\'e9dire la variable cible\
+\cf0     y_pred \cf10 =\cf0  model.\cf7 predict\cf0 ([features])\
+    \
+    return y_pred[0]\
+\
+\pard\pardeftab708\ri-340\sl325\slmult1\qj\partightenfactor0
+\cf3 $$\cf0  \cf4 LANGUAGE\cf0  \cf5 'plpythonu'\cf0 ;\
+\pard\pardeftab708\ri-340\qj\partightenfactor0
+
+\f0\fs20 \cf0 \
+\
+\
+\
+\pard\pardeftab708\ri-340\sl325\slmult1\partightenfactor0
+
+\f2\fs21 \cf4 %%sql\
+CREATE TABLE\cf0  linreg_pred \cf4 AS\cf0  (
+\f0 \
+\pard\pardeftab708\ri-340\sl325\slmult1\partightenfactor0
+
+\f2 \cf0     \cf4 SELECT\cf0  \
+        test.id\
+        , test.sex\
+        , test.rings\
+        , \cf7 linreg_pred_func\cf0 (
+\f0 \
+
+\f2             model.serialized_linreg_model   \cf8 -- bytea\
+\cf0             , \cf4 ARRAY\cf0 [length, shucked_weight] \cf8 -- array\
+\cf0         ) \cf4 AS\cf0  \cf9 y_pred\
+\cf0     \cf4 FROM\cf0  \
+        (\cf4 SELECT\cf0  \cf10 *\cf0  \cf4 FROM\cf0  abalone_split \cf4 WHERE\cf0  split\cf10 =
+\f0 \cf3 0
+\f2 \cf0 ) \cf4 AS\cf0  \cf9 test\
+\cf0         , linreg_fitted \cf4 AS\cf0  \cf9 model
+\f0 \
+
+\f2 \cf0     \cf4 WHERE\cf0  test.sex \cf10 =\cf0  model.sex\
+) DISTRIBUTED \cf4 BY\cf0  (sex);\
+\pard\pardeftab708\ri-340\partightenfactor0
+
+\f0\fs24 \cf0 \
+\pard\pardeftab708\ri-340\partightenfactor0
+
+\fs20 \cf0 \
+\pard\pardeftab708\ri-340\partightenfactor0
+
+\fs24 \cf0 \
+\pard\pardeftab708\ri-340\sl325\slmult1\partightenfactor0
+
+\f2\fs21 \cf4 %%sql\
+SELECT\cf0  \cf10 *\cf0  \cf4 FROM\cf0  linreg_pred \cf4 WHERE\cf0  sex\cf10 =\cf5 'I'\cf0  \cf4 ORDER BY\cf0  id \cf4 LIMIT\cf0  \cf3 5\cf0 ;
+\f0 \
+\pard\pardeftab708\ri-340\partightenfactor0
+
+\fs24 \cf12 \
+\pard\pardeftab708\ri-340\partightenfactor0
+\cf0 \
+\pard\pardeftab708\ri-340\qj\partightenfactor0
+
+\fs20 \cf0 \
+\pard\pardeftab708\ri-340\qj\partightenfactor0
+
+\fs24 \cf0 \
+\pard\pardeftab708\ri-340\sl325\slmult1\qj\partightenfactor0
+
+\f2\fs21 \cf4 CREATE\cf0  \cf4 FUNCTION\cf0  \cf7 linreg_pred_dot_func\cf0 (\
+    coef float8[]\
+    , intercept float8\
+    , features float8[]\
+) \cf4 RETURNS\cf0  SETOF float8\
+\cf4 AS\cf0  \cf3 $$\cf0     import numpy \cf4 as\cf0  \cf9 np\
+\pard\pardeftab708\ri-340\sl325\slmult1\qj\partightenfactor0
+\cf0     \
+    \cf8 # Pr\'e9dire la variable cible\
+\cf0     y_pred \cf10 =\cf0  np.\cf7 dot\cf0 (coef, np.\cf7 array\cf0 ([features]).T) \cf10 +\cf0  intercept\
+    \
+    return y_pred\
+\
+\pard\pardeftab708\ri-340\sl325\slmult1\qj\partightenfactor0
+\cf3 $$\cf0  \cf4 LANGUAGE\cf0  \cf5 'plpythonu'\cf0 ;\
+\pard\pardeftab708\ri-340\qj\partightenfactor0
+
+\f0\fs24 \cf0 \
+\pard\pardeftab708\ri-340\qj\partightenfactor0
+
+\fs20 \cf0 \
+\
+\pard\pardeftab708\ri-340\sl325\slmult1\partightenfactor0
+
+\f2\fs21 \cf4 %%sql\
+\pard\pardeftab708\ri-340\sl325\slmult1\qj\partightenfactor0
+\cf4 CREATE\cf0  TYPE linreg_eval_type \cf4 AS\cf0  (
+\f0 \
+\pard\pardeftab708\ri-340\sl325\slmult1\qj\partightenfactor0
+
+\f2 \cf0     mae float8\
+    , mape float8\
+    , mse float8\
+    , r2_score float8\
+);\
+\pard\pardeftab708\ri-340\qj\partightenfactor0
+
+\f0\fs20 \cf0 \
+\
+\
+\
+\pard\pardeftab708\ri-340\sl325\slmult1\partightenfactor0
+
+\f2\fs21 \cf4 %%sql\
+\pard\pardeftab708\ri-340\sl325\slmult1\qj\partightenfactor0
+\cf4 CREATE\cf0  \cf4 FUNCTION\cf0  \cf7 linreg_eval\cf0 (
+\f0 \
+\pard\pardeftab708\ri-340\sl325\slmult1\qj\partightenfactor0
+
+\f2 \cf0     y_actual float8[]\
+    , y_pred float8[]\
+) \cf4 RETURNS\cf0  linreg_eval_type
+\f0 \
+\pard\pardeftab708\ri-340\sl325\slmult1\qj\partightenfactor0
+
+\f2 \cf4 AS\cf0  \cf3 $$\cf0     \cf4 from\cf0  sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score\
+    import numpy \cf4 as\cf0  \cf9 np\
+\pard\pardeftab708\ri-340\sl325\slmult1\qj\partightenfactor0
+\cf0     \
+    mae \cf10 =\cf0  \cf7 mean_absolute_error\cf0 (y_actual, y_pred)\
+    mse \cf10 =\cf0  \cf7 mean_squared_error\cf0 (y_actual, y_pred)\
+    r2_score \cf10 =\cf0  r2_score(y_actual, y_pred)\
+    \
+    y_pred_f \cf10 =\cf0  np.\cf7 array\cf0 (y_pred, dtype\cf10 =\cf0 float)\
+    mape \cf10 =\cf0  \cf3 100\cf0  \cf10 *\cf0  \cf7 sum\cf0 (\cf7 abs\cf0 (y_actual 
+\f0 \cf10 -
+\f2 \cf0  y_pred_f)\cf10 /\cf0 y_actual) \cf10 /\cf0  \cf7 len\cf0 (y_actual)\
+    \
+    \cf8 #eval_score = [mae, mape, mse, r2_score]\
+\cf0     \
+    return \{\
+        \cf5 'mae'\cf0 : mae, \
+        \cf5 'mape'\cf0 : mape, \
+        \cf5 'mse'\cf0 : mse, \
+        \cf5 'r2_score'\cf0 : r2_score\
+    \}\
+\
+\pard\pardeftab708\ri-340\sl325\slmult1\qj\partightenfactor0
+\cf3 $$\cf0  \cf4 LANGUAGE\cf0  \cf5 'plpythonu'\cf0 ;\
+\pard\pardeftab708\ri-340\qj\partightenfactor0
+
+\f0\fs20 \cf0 \
+\
+\
+\
+\pard\pardeftab708\ri-340\sl325\slmult1\partightenfactor0
+
+\f2\fs21 \cf4 %%sql\
+\pard\pardeftab708\ri-340\sl325\slmult1\qj\partightenfactor0
+\cf4 SELECT\cf0  \
+    sex\
+    , (\cf7 linreg_eval\cf0 (rings_agg, y_pred_agg)).\cf10 *
+\f0 \
+
+\f2 \cf4 FROM\cf0  (\
+    \cf4 SELECT\cf0  \
+        sex\
+        , \cf7 ARRAY_AGG\cf0 (rings) \cf4 AS\cf0  \cf9 rings_agg\
+\pard\pardeftab708\ri-340\sl325\slmult1\qj\partightenfactor0
+\cf0         , \cf7 ARRAY_AGG\cf0 (y_pred) \cf4 AS\cf0  \cf9 y_pred_agg\
+\cf0     \cf4 FROM\cf0  linreg_pred
+\f0 \
+
+\f2     \cf4 GROUP BY\cf0  sex\
+) a\
+\pard\pardeftab708\ri-340\qj\partightenfactor0
+
+\f0\fs20 \cf0 \
+\pard\pardeftab708\ri-340\qj\partightenfactor0
+
+\fs24 \cf0 \
+\pard\pardeftab708\ri-340\partightenfactor0
+
+\fs30 \cf13 \ul \ulc13 \
+}
